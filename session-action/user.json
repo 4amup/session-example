@@ -1,0 +1,7 @@
+{
+  "testuser": {
+    "password": "1234",
+    "name": "testuser"
+  }
+}
+// testuser为登录用户名，password为登录密码，name为用户昵称
