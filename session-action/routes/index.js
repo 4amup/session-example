@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
     console.log(req.session)
     res.render('sign', {
       session: req.session,
-      title: signed
+      title: 'signed'
     })
   } else { // 否则展示index登录页面
     res.render('index', {title: 'index'})
