@@ -8,7 +8,7 @@ var session = require('express-session');
 var nunjucks = require('nunjucks');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var sign = require('./routes/sign');
 
 var app = express();
 
@@ -26,10 +26,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  secret: '加一些盐？', // 增加安全性
+  cookie: {maxAge: 60 * 1000 * 30}, // 设置过期时间
+  resave: true, // 即使session没有修改，也保存session的值，默认true
+  saveUninitialized: false
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/sign', sign);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
