@@ -9,6 +9,7 @@ var nunjucks = require('nunjucks');
 
 var routes = require('./routes/index');
 var sign = require('./routes/sign');
+var out = require('./routes/out')
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/sign', sign);
+app.use('/out', out)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
